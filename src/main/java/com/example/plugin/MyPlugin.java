@@ -3,6 +3,7 @@ package com.example.plugin;
 import de.igslandstuhl.database.modules.WebModule;
 import de.igslandstuhl.database.modules.config.ModuleConfig;
 
+@WebModule.Module
 public class MyPlugin extends WebModule {
 
     public MyPlugin() {
