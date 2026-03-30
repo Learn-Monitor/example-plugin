@@ -4,12 +4,7 @@ import de.igslandstuhl.database.modules.WebModule;
 import de.igslandstuhl.database.modules.config.ModuleConfig;
 
 @WebModule.Module
-public class MyPlugin extends WebModule {
-
-    public MyPlugin() {
-        // kein super(...) nötig, init() wird vom Loader aufgerufen
-    }
-
+public class ExamplePlugin extends WebModule {
     @Override
     protected void onLoad() {
         System.out.println("ExamplePlugin loaded!");
