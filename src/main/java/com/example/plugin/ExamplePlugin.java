@@ -1,12 +1,13 @@
 package com.example.plugin;
 
-import de.igslandstuhl.database.modules.WebModule;
-import de.igslandstuhl.database.modules.config.ModuleConfig;
+import de.igslandstuhl.database.plugins.Plugin;
 
-@WebModule.Module
-public class ExamplePlugin extends WebModule {
+public class ExamplePlugin extends Plugin {
+    private ExamplePluginConfig config;
+
     @Override
     protected void onLoad() {
+        config = new ExamplePluginConfig(this);
         System.out.println("ExamplePlugin loaded!");
     }
 
@@ -17,7 +18,7 @@ public class ExamplePlugin extends WebModule {
     protected void onDisable() {}
 
     @Override
-    public ModuleConfig<?> getConfig() {
-        return null;
+    public ExamplePluginConfig getConfig() {
+        return config;
     }
 }

@@ -1,0 +1,4 @@
+id: example_plugin
+name: Example Plugin
+description: This is an example plugin
+main: com.example.plugin.ExamplePlugin
