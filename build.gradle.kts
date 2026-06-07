@@ -15,8 +15,12 @@ repositories {
 }
 
 dependencies {
-    compileOnly("igs-landstuhl:student-database:v1.1.0-SNAPSHOT-0") // TODO: Use an api only implementation here
-    
+    compileOnly("igs-landstuhl:student-database:v2.0.0-SNAPSHOT-1") // TODO: Use an api only implementation here
+    compileOnly("org.slf4j:slf4j-api:2.0.13")
+
+    // Only for local debugging:
+    runtimeOnly("igs-landstuhl:student-database:v2.0.0-SNAPSHOT-1")
+
     // test framework (optional)
     testImplementation("org.junit.jupiter:junit-jupiter:5.13.4")
 }
@@ -39,5 +43,21 @@ tasks.test {
     useJUnitPlatform()
 }
 
-version = "v1.0.0"
+tasks.register<Copy>("deployPluginJar") {
+    dependsOn(tasks.jar)
+
+    from(tasks.jar)
+    into(layout.buildDirectory.dir("debug-run/plugins"))
+}
+val runtimeClasspath = configurations.runtimeClasspath
+
+tasks.register("printRuntimeClasspath") {
+    val classpath = runtimeClasspath.map { it.asPath }
+
+    doLast {
+        println(classpath.get())
+    }
+}
+
+version = "v1.0.1"
 group = "igs-landstuhl.plugins"
