@@ -8,7 +8,7 @@ public class ExamplePlugin extends Plugin {
     @Override
     protected void onLoad() {
         config = new ExamplePluginConfig(this);
-        System.out.println("ExamplePlugin loaded!");
+        getLogger().info("Example plugin loaded.");
     }
 
     @Override
